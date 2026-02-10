@@ -3,1280 +3,319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Agency Inquiry Form</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Primary SEO Metadata -->
+    <title>HeartUnion | From Striving to Rest | Mystical Union with God</title>
+    <meta name="description" content="HeartUnion is a sacred space for healing, renewal, and transformation through mystical union with God. Move from spiritual exhaustion to divine rest.">
+    <meta name="keywords" content="mystical union, heart healing, biblical meditation, spiritual rest, inner peace, christian meditation">
+    
+    <!-- Open Graph / Facebook / Instagram -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="HeartUnion | From Striving to Rest">
+    <meta property="og:description" content="Experience God as present, not theoretical. A sacred space for weary hearts to find healing and union.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1516589174184-c684846b4b63?q=80&w=1000&auto=format&fit=crop">
+
+    <!-- Fonts and Frameworks -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary: #1A73E8;
-            --secondary: #FF9E44;
-            --accent: #34A853;
-            --neutral-dark: #2D3748;
-            --neutral-mid: #718096;
-            --neutral-light: #F7FAFC;
-            --error: #E53E3E;
-            --success: #38A169;
+            --bg-primary: #fff9f9;
+            --accent-soft: #fce4ec;
+            --text-main: #3d3535;
+            --pink-primary: #e91e63;
+            --pink-muted: #d88a8a;
+            --pink-soft: #f8bbd0;
         }
-        
+        html {
+            scroll-behavior: smooth;
+        }
         body {
-            font-family: 'Inter', sans-serif;
-            color: var(--neutral-dark);
-            background-color: #f5f7fa;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            overflow-x: hidden;
         }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-        }
-        
-        .accent-text {
+        h1, h2, h3, .serif {
             font-family: 'Playfair Display', serif;
         }
-        
-        .form-container {
-            background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
-            background-size: cover;
-            background-position: center;
-            position: relative;
+        .glass-nav {
+            background: rgba(255, 249, 249, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(216, 138, 138, 0.1);
         }
-        
-        .form-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(26, 115, 232, 0.8) 0%, rgba(255, 158, 68, 0.8) 100%);
-            z-index: 1;
+        .gradient-bg {
+            background: radial-gradient(circle at 50% 50%, #fff0f3 0%, #fff9f9 100%);
         }
-        
-        .form-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .form-card {
-            border-radius: 1rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            background-color: white;
-            transition: all 0.3s ease;
-        }
-        
-        .form-step {
-            display: none;
-        }
-        
-        .form-step.active {
-            display: block;
-            animation: fadeIn 0.5s ease forwards;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background-color: #1565C0;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(26, 115, 232, 0.3);
-        }
-        
-        .btn-secondary {
-            background-color: white;
-            color: var(--primary);
-            border: 1px solid #E2E8F0;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-secondary:hover {
-            background-color: #F7FAFC;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .progress-bar {
-            height: 4px;
-            background-color: #E2E8F0;
-            border-radius: 2px;
-            overflow: hidden;
-        }
-        
-        .progress-bar-fill {
-            height: 100%;
-            background-color: var(--primary);
-            transition: width 0.5s ease;
-        }
-        
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
-        }
-        
-        .form-label {
-            font-weight: 500;
-            color: var(--neutral-dark);
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid #E2E8F0;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-        
-        .checkbox-container input[type="checkbox"] {
-            margin-right: 0.5rem;
-        }
-        
-        .radio-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-        
-        .radio-container input[type="radio"] {
-            margin-right: 0.5rem;
-        }
-        
-        .step-indicator {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-        }
-        
-        .step-indicator-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex: 1;
-        }
-        
-        .step-indicator-bubble {
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 50%;
-            background-color: white;
-            border: 2px solid #E2E8F0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 2;
-            transition: all 0.3s ease;
-        }
-        
-        .step-indicator-bubble.active {
-            background-color: var(--primary);
-            border-color: var(--primary);
-            color: white;
-        }
-        
-        .step-indicator-bubble.completed {
-            background-color: white;
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-        
-        .step-indicator-text {
-            font-size: 0.75rem;
-            color: var(--neutral-mid);
-            text-align: center;
-        }
-        
-        .step-indicator-text.active {
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        .step-indicator-line {
-            flex: 1;
-            height: 2px;
-            background-color: #E2E8F0;
-            position: relative;
-            top: 1.25rem;
-            z-index: 1;
-        }
-        
-        .step-indicator-line.completed {
-            background-color: var(--primary);
-        }
-        
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background-color: #f2d74e;
+        .fade-in {
             opacity: 0;
-            animation: confetti 5s ease-in-out forwards;
-            z-index: 9999;
+            transform: translateY(20px);
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
         }
-        
-        @keyframes confetti {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(1000px) rotate(720deg);
-                opacity: 0;
-            }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        .destination-card {
-            border: 2px solid transparent;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .cta-button {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        .destination-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(216, 138, 138, 0.4);
         }
-        
-        .destination-card.selected {
-            border-color: var(--primary);
-            background-color: rgba(26, 115, 232, 0.05);
+        .card-soft {
+            background: white;
+            border: 1px solid rgba(216, 138, 138, 0.1);
+            border-radius: 24px;
+            transition: transform 0.3s ease;
         }
-        
-        .range-slider {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 6px;
-            border-radius: 3px;
-            background: #E2E8F0;
-            outline: none;
+        .card-soft:hover {
+            transform: translateY(-4px);
+            border-color: var(--pink-soft);
         }
-        
-        .range-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--primary);
-            cursor: pointer;
-            border: 2px solid white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        
-        .range-slider::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--primary);
-            cursor: pointer;
-            border: 2px solid white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        
-        @media (max-width: 768px) {
-            .step-indicator-text {
-                display: none;
-            }
-            
-            .step-indicator-bubble {
-                width: 2rem;
-                height: 2rem;
-                font-size: 0.75rem;
-            }
+        ::selection {
+            background: var(--pink-soft);
+            color: white;
         }
     </style>
 </head>
-<body class="min-h-screen">
-    <div class="form-container min-h-screen py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
-        <div class="form-content w-full max-w-4xl">
-            <div class="text-center mb-8 text-white">
-                <h1 class="text-4xl sm:text-5xl font-bold mb-4">Dream Vacation Inquiry</h1>
-                <p class="text-xl opacity-90">Tell us about your perfect getaway, and we'll make it happen.</p>
+<body class="gradient-bg">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tight text-neutral-800">
+                Heart<span class="text-[#d88a8a]">Union</span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-neutral-600">
+                <a href="#about" class="hover:text-[#d88a8a] transition">The Revelation</a>
+                <a href="#experience" class="hover:text-[#d88a8a] transition">Experience</a>
+                <a href="#who" class="hover:text-[#d88a8a] transition">For You</a>
             </div>
-            
-            <div class="form-card p-6 sm:p-10">
-                <!-- Progress Indicator -->
-                <div class="step-indicator hidden md:flex mb-8">
-                    <div class="step-indicator-item">
-                        <div class="step-indicator-bubble active completed" data-step="1">1</div>
-                        <div class="step-indicator-text active">Personal</div>
-                    </div>
-                    <div class="step-indicator-line" id="line-1-2"></div>
-                    <div class="step-indicator-item">
-                        <div class="step-indicator-bubble" data-step="2">2</div>
-                        <div class="step-indicator-text">Travel</div>
-                    </div>
-                    <div class="step-indicator-line" id="line-2-3"></div>
-                    <div class="step-indicator-item">
-                        <div class="step-indicator-bubble" data-step="3">3</div>
-                        <div class="step-indicator-text">Experience</div>
-                    </div>
-                    <div class="step-indicator-line" id="line-3-4"></div>
-                    <div class="step-indicator-item">
-                        <div class="step-indicator-bubble" data-step="4">4</div>
-                        <div class="step-indicator-text">Budget</div>
-                    </div>
-                    <div class="step-indicator-line" id="line-4-5"></div>
-                    <div class="step-indicator-item">
-                        <div class="step-indicator-bubble" data-step="5">5</div>
-                        <div class="step-indicator-text">Review</div>
-                    </div>
-                </div>
-                
-                <!-- Mobile Progress Bar -->
-                <div class="md:hidden mb-6">
-                    <div class="flex justify-between text-sm mb-2">
-                        <span>Progress</span>
-                        <span id="progress-text">Step 1 of 5</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-bar-fill" style="width: 20%"></div>
-                    </div>
-                </div>
-                
-                <!-- Form Steps -->
-                <form id="travel-inquiry-form" action="https://formsubmit.co/stanley.mitorg@gmail.com" method="POST">
-                    <!-- FormSubmit configuration -->
-                    <input type="hidden" name="_subject" value="New Travel Inquiry">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://liqkgmfb.manus.space/thanks.html">
-                    <input type="hidden" name="form-name" value="travel-inquiry">
-                    <input type="hidden" name="all_form_data" id="all_form_data" value="">
-                    
-                    <!-- Step 1: Personal Information -->
-                    <div class="form-step active" data-step="1">
-                        <h2 class="text-2xl font-bold mb-6">Personal Information</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                            <div>
-                                <label for="fullName" class="form-label">Full Name <span class="text-red-500">*</span></label>
-                                <input type="text" id="fullName" name="fullName" class="form-input" required>
-                            </div>
-                            <div>
-                                <label for="email" class="form-label">Email Address <span class="text-red-500">*</span></label>
-                                <input type="email" id="email" name="email" class="form-input" required>
-                            </div>
-                            <div>
-                                <label for="phone" class="form-label">Phone Number <span class="text-red-500">*</span></label>
-                                <input type="tel" id="phone" name="phone" class="form-input" required>
-                            </div>
-                            <div>
-                                <label for="country" class="form-label">Country of Residence <span class="text-red-500">*</span></label>
-                                <select id="country" name="country" class="form-input" required>
-                                    <option value="" disabled selected>Select your country</option>
-                                    <option value="United States">United States</option>
-                                    <option value="United Kingdom">United Kingdom</option>
-                                    <option value="Canada">Canada</option>
-                                    <option value="Australia">Australia</option>
-                                    <option value="Germany">Germany</option>
-                                    <option value="France">France</option>
-                                    <option value="Japan">Japan</option>
-                                    <option value="China">China</option>
-                                    <option value="India">India</option>
-                                    <option value="Brazil">Brazil</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="mb-8">
-                            <label class="form-label">Preferred Contact Method <span class="text-red-500">*</span></label>
-                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                <div class="radio-container">
-                                    <input type="radio" id="contact-email" name="contactMethod" value="email" checked>
-                                    <label for="contact-email">Email</label>
-                                </div>
-                                <div class="radio-container">
-                                    <input type="radio" id="contact-phone" name="contactMethod" value="phone">
-                                    <label for="contact-phone">Phone</label>
-                                </div>
-                                <div class="radio-container">
-                                    <input type="radio" id="contact-whatsapp" name="contactMethod" value="whatsapp">
-                                    <label for="contact-whatsapp">WhatsApp</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-blue-50 p-4 rounded-lg mb-8">
-                            <p class="text-sm text-blue-700">
-                                <span class="font-medium">Privacy Note:</span> Your information is secure and will only be used to prepare your travel proposal. We never share your details with third parties without your consent.
-                            </p>
-                        </div>
-                        
-                        <div class="flex justify-end">
-                            <button type="button" class="btn-primary px-6 py-3 rounded-lg font-medium next-step">
-                                Continue
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 inline" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Step 2: Travel Details -->
-                    <div class="form-step" data-step="2">
-                        <h2 class="text-2xl font-bold mb-6">Travel Details</h2>
-                        
-                        <div class="mb-8">
-                            <label class="form-label">Destination Preferences <span class="text-red-500">*</span></label>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                                <div class="destination-card" data-destination="Europe">
-                                    <h3 class="font-medium mb-1">Europe</h3>
-                                    <p class="text-sm text-gray-600">Historical cities, culture & cuisine</p>
-                                </div>
-                                <div class="destination-card" data-destination="Asia">
-                                    <h3 class="font-medium mb-1">Asia</h3>
-                                    <p class="text-sm text-gray-600">Ancient temples, vibrant markets & nature</p>
-                                </div>
-                                <div class="destination-card" data-destination="Caribbean">
-                                    <h3 class="font-medium mb-1">Caribbean</h3>
-                                    <p class="text-sm text-gray-600">Pristine beaches & island vibes</p>
-                                </div>
-                                <div class="destination-card" data-destination="North America">
-                                    <h3 class="font-medium mb-1">North America</h3>
-                                    <p class="text-sm text-gray-600">National parks, cities & diverse landscapes</p>
-                                </div>
-                                <div class="destination-card" data-destination="South America">
-                                    <h3 class="font-medium mb-1">South America</h3>
-                                    <p class="text-sm text-gray-600">Rainforests, mountains & vibrant culture</p>
-                                </div>
-                                <div class="destination-card" data-destination="Other">
-                                    <h3 class="font-medium mb-1">Other</h3>
-                                    <p class="text-sm text-gray-600">Tell us your dream destination</p>
-                                </div>
-                            </div>
-                            <div id="custom-destination-container" class="mt-4 hidden">
-                                <input type="text" id="customDestination" name="customDestination" class="form-input" placeholder="Please specify your destination">
-                            </div>
-                            <input type="hidden" id="selectedDestinations" name="selectedDestinations" required>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                            <div>
-                                <label for="startDate" class="form-label">Start Date <span class="text-red-500">*</span></label>
-                                <input type="date" id="startDate" name="startDate" class="form-input" required>
-                            </div>
-                            <div>
-                                <label for="endDate" class="form-label">End Date <span class="text-red-500">*</span></label>
-                                <input type="date" id="endDate" name="endDate" class="form-input" required>
-                            </div>
-                        </div>
-                        
-                        <div class="mb-8">
-                            <div class="checkbox-container">
-                                <input type="checkbox" id="flexibleDates" name="flexibleDates" value="yes">
-                                <label for="flexibleDates">My travel dates are flexible (±3 days)</label>
-                            </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                            <div>
-                                <label class="form-label">Number of Travelers <span class="text-red-500">*</span></label>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div>
-                                        <label for="adults" class="text-sm text-gray-600">Adults</label>
-                                        <div class="flex items-center mt-1">
-                                            <button type="button" class="px-3 py-1 border rounded-l-lg decrease-count" data-target="adults">-</button>
-                                            <input type="number" id="adults" name="adults" class="form-input border-l-0 border-r-0 rounded-none text-center" value="2" min="1" max="10" readonly>
-                                            <button type="button" class="px-3 py-1 border rounded-r-lg increase-count" data-target="adults">+</button>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="children" class="text-sm text-gray-600">Children</label>
-                                        <div class="flex items-center mt-1">
-                                            <button type="button" class="px-3 py-1 border rounded-l-lg decrease-count" data-target="children">-</button>
-                                            <input type="number" id="children" name="children" class="form-input border-l-0 border-r-0 rounded-none text-center" value="0" min="0" max="10" readonly>
-                                            <button type="button" class="px-3 py-1 border rounded-r-lg increase-count" data-target="children">+</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <label for="accommodation" class="form-label">Accommodation Preference</label>
-                                <select id="accommodation" name="accommodation" class="form-input">
-                                    <option value="luxury">Luxury</option>
-                                    <option value="midRange" selected>Mid-Range</option>
-                                    <option value="budget">Budget</option>
-                                    <option value="noPreference">No Preference</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between">
-                            <button type="button" class="btn-secondary px-6 py-3 rounded-lg font-medium prev-step">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 inline" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-                                </svg>
-                                Back
-                            </button>
-                            <button type="button" class="btn-primary px-6 py-3 rounded-lg font-medium next-step">
-                                Continue
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 inline" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Step 3: Experience Preferences -->
-                    <div class="form-step" data-step="3">
-                        <h2 class="text-2xl font-bold mb-6">Experience Preferences</h2>
-                        
-                        <div class="mb-8">
-                            <label class="form-label">Trip Purpose <span class="text-red-500">*</span></label>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                                <div class="checkbox-container">
-                                    <input type="checkbox" id="purpose-leisure" name="tripPurpose" value="Leisure">
-                                    <label for="purpose-leisure">Leisure</label>
-                                </div>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" id="purpose-honeymoon" name="tripPurpose" value="Honeymoon">
-                                    <label for="purpose-honeymoon">Honeymoon</label>
-                                </div>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" id="purpose-family" name="tripPurpose" value="Family Vacation">
-                                    <label for="purpose-family">Family Vacation</label>
-                                </div>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" id="purpose-adventure" name="tripPurpose" value="Adventure">
-                                    <label for="purpose-adventure">Adventure</label>
-                                </div>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" id="purpose-cultural" name="tripPurpose" value="Cultural Experience">
-                                    <label for="purpose-cultural">Cultural Experience</label>
-                                </div>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" id="purpose-other" name="tripPurpose" value="Other">
-                                    <label for="purpose-other">Other</label>
-                                </div>
-                            </div>
-                            <div id="custom-purpose-container" class="mt-4 hidden">
-                                <input type="text" id="customPurpose" name="customPurpose" class="form-input" placeholder="Please specify your trip purpose">
-                            </div>
-                        </div>
-                        
-                        <div class="mb-8">
-                            <label class="form-label">Activity Interests <span class="text-red-500">*</span></label>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                                <div class="checkbox-container">
-                                    <input type="checkbox" id="activity-cultural" name="activityInterests" value="Cultural Sightseeing">
-                                    <label for="activity-cultural">Cultural Sightseeing</label>
-                                </div>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" id="activity-adventure" name="activityInterests" value="Adventure Sports">
-                                    <label for="activity-adventure">Adventure Sports</label>
-                                </div>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" id="activity-beach" name="activityInterests" value="Beach Relaxation">
-                                    <label for="activity-beach">Beach Relaxation</label>
-                                </div>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" id="activity-wildlife" name="activityInterests" value="Wildlife & Nature">
-                                    <label for="activity-wildlife">Wildlife & Nature</label>
-                                </div>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" id="activity-food" name="activityInterests" value="Food & Culinary">
-                                    <label for="activity-food">Food & Culinary</label>
-                                </div>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" id="activity-other" name="activityInterests" value="Other">
-                                    <label for="activity-other">Other</label>
-                                </div>
-                            </div>
-                            <div id="custom-activity-container" class="mt-4 hidden">
-                                <input type="text" id="customActivity" name="customActivity" class="form-input" placeholder="Please specify your activity interest">
-                            </div>
-                        </div>
-                        
-                        <div class="mb-8">
-                            <label for="specialInterests" class="form-label">Special Interests or Must-See Attractions</label>
-                            <textarea id="specialInterests" name="specialInterests" class="form-input h-24" placeholder="Tell us about any specific attractions, landmarks, or experiences you don't want to miss"></textarea>
-                        </div>
-                        
-                        <div class="mb-8">
-                            <label for="accessibilityRequirements" class="form-label">Accessibility Requirements</label>
-                            <textarea id="accessibilityRequirements" name="accessibilityRequirements" class="form-input h-24" placeholder="Let us know if you have any accessibility needs we should consider when planning your trip"></textarea>
-                        </div>
-                        
-                        <div class="flex justify-between">
-                            <button type="button" class="btn-secondary px-6 py-3 rounded-lg font-medium prev-step">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 inline" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-                                </svg>
-                                Back
-                            </button>
-                            <button type="button" class="btn-primary px-6 py-3 rounded-lg font-medium next-step">
-                                Continue
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 inline" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Step 4: Budget & Planning -->
-                    <div class="form-step" data-step="4">
-                        <h2 class="text-2xl font-bold mb-6">Budget & Planning</h2>
-                        
-                        <div class="mb-8">
-                            <div class="flex justify-between items-center mb-2">
-                                <label class="form-label mb-0">Budget Range <span class="text-red-500">*</span></label>
-                                <select id="currency" name="currency" class="form-input w-24">
-                                    <option value="USD" selected>USD</option>
-                                    <option value="EUR">EUR</option>
-                                    <option value="GBP">GBP</option>
-                                    <option value="CAD">CAD</option>
-                                    <option value="AUD">AUD</option>
-                                    <option value="INR">INR</option>
-                                </select>
-                            </div>
-                            <input type="range" id="budgetRange" name="budgetRange" min="1000" max="20000" step="1000" value="5000" class="range-slider mb-2">
-                            <div class="flex justify-between text-sm text-gray-600">
-                                <span id="budgetMin">$1,000</span>
-                                <span id="budgetValue">$5,000</span>
-                                <span id="budgetMax">$20,000</span>
-                            </div>
-                            <div class="mt-4 bg-gray-50 p-4 rounded-lg">
-                                <p class="text-sm text-gray-700">
-                                    This budget range helps us match you with appropriate travel options. The final price will depend on your specific choices, seasonality, and availability.
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="mb-8">
-                            <label class="form-label">Booking Timeline <span class="text-red-500">*</span></label>
-                            <div class="space-y-3">
-                                <div class="radio-container">
-                                    <input type="radio" id="timeline-immediate" name="bookingTimeline" value="immediate">
-                                    <label for="timeline-immediate">I'm ready to book immediately</label>
-                                </div>
-                                <div class="radio-container">
-                                    <input type="radio" id="timeline-1month" name="bookingTimeline" value="within1Month" checked>
-                                    <label for="timeline-1month">Within 1 month</label>
-                                </div>
-                                <div class="radio-container">
-                                    <input type="radio" id="timeline-3months" name="bookingTimeline" value="within3Months">
-                                    <label for="timeline-3months">Within 3 months</label>
-                                </div>
-                                <div class="radio-container">
-                                    <input type="radio" id="timeline-3monthsplus" name="bookingTimeline" value="3MonthsPlus">
-                                    <label for="timeline-3monthsplus">More than 3 months from now</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mb-8">
-                            <label class="form-label">Payment Preferences</label>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="checkbox-container">
-                                    <input type="checkbox" id="payment-credit" name="paymentPreferences" value="Credit Card">
-                                    <label for="payment-credit">Credit Card</label>
-                                </div>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" id="payment-bank" name="paymentPreferences" value="Bank Transfer">
-                                    <label for="payment-bank">Bank Transfer</label>
-                                </div>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" id="payment-paypal" name="paymentPreferences" value="PayPal">
-                                    <label for="payment-paypal">PayPal</label>
-                                </div>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" id="payment-installment" name="paymentPreferences" value="Installment Plan">
-                                    <label for="payment-installment">Installment Plan</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mb-8">
-                            <div class="checkbox-container">
-                                <input type="checkbox" id="travelInsurance" name="travelInsurance" value="yes">
-                                <label for="travelInsurance">I'm interested in travel insurance options</label>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between">
-                            <button type="button" class="btn-secondary px-6 py-3 rounded-lg font-medium prev-step">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 inline" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-                                </svg>
-                                Back
-                            </button>
-                            <button type="button" class="btn-primary px-6 py-3 rounded-lg font-medium next-step">
-                                Review Inquiry
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 inline" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Step 5: Review -->
-                    <div class="form-step" data-step="5">
-                        <h2 class="text-2xl font-bold mb-6">Review Your Inquiry</h2>
-                        
-                        <div class="space-y-6 mb-8">
-                            <div class="bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
-                                <div class="bg-primary/10 px-4 py-3 border-b border-gray-200">
-                                    <h3 class="text-lg font-semibold text-primary flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                                        </svg>
-                                        Personal Information
-                                    </h3>
-                                </div>
-                                <div class="p-4">
-                                    <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
-                                        <div>
-                                            <dt class="text-sm font-medium text-gray-500">Full Name</dt>
-                                            <dd class="mt-1 text-gray-800" id="review-fullName">-</dd>
-                                        </div>
-                                        <div>
-                                            <dt class="text-sm font-medium text-gray-500">Email Address</dt>
-                                            <dd class="mt-1 text-gray-800" id="review-email">-</dd>
-                                        </div>
-                                        <div>
-                                            <dt class="text-sm font-medium text-gray-500">Phone Number</dt>
-                                            <dd class="mt-1 text-gray-800" id="review-phone">-</dd>
-                                        </div>
-                                        <div>
-                                            <dt class="text-sm font-medium text-gray-500">Preferred Contact</dt>
-                                            <dd class="mt-1 text-gray-800 capitalize" id="review-contactMethod">-</dd>
-                                        </div>
-                                        <div>
-                                            <dt class="text-sm font-medium text-gray-500">Country of Residence</dt>
-                                            <dd class="mt-1 text-gray-800" id="review-country">-</dd>
-                                        </div>
-                                    </dl>
-                                </div>
-                            </div>
-                            
-                            <div class="bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
-                                <div class="bg-primary/10 px-4 py-3 border-b border-gray-200">
-                                    <h3 class="text-lg font-semibold text-primary flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                                        </svg>
-                                        Travel Details
-                                    </h3>
-                                </div>
-                                <div class="p-4">
-                                    <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
-                                        <div class="md:col-span-2">
-                                            <dt class="text-sm font-medium text-gray-500">Destinations</dt>
-                                            <dd class="mt-1 text-gray-800" id="review-destinations">-</dd>
-                                        </div>
-                                        <div>
-                                            <dt class="text-sm font-medium text-gray-500">Start Date</dt>
-                                            <dd class="mt-1 text-gray-800" id="review-startDate">-</dd>
-                                        </div>
-                                        <div>
-                                            <dt class="text-sm font-medium text-gray-500">End Date</dt>
-                                            <dd class="mt-1 text-gray-800" id="review-endDate">-</dd>
-                                        </div>
-                                        <div>
-                                            <dt class="text-sm font-medium text-gray-500">Flexible Dates</dt>
-                                            <dd class="mt-1 text-gray-800" id="review-flexibleDates">No</dd>
-                                        </div>
-                                        <div>
-                                            <dt class="text-sm font-medium text-gray-500">Travelers</dt>
-                                            <dd class="mt-1 text-gray-800" id="review-travelers">-</dd>
-                                        </div>
-                                        <div>
-                                            <dt class="text-sm font-medium text-gray-500">Accommodation</dt>
-                                            <dd class="mt-1 text-gray-800 capitalize" id="review-accommodation">-</dd>
-                                        </div>
-                                    </dl>
-                                </div>
-                            </div>
-                            
-                            <div class="bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
-                                <div class="bg-primary/10 px-4 py-3 border-b border-gray-200">
-                                    <h3 class="text-lg font-semibold text-primary flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                        </svg>
-                                        Experience Preferences
-                                    </h3>
-                                </div>
-                                <div class="p-4">
-                                    <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
-                                        <div class="md:col-span-2">
-                                            <dt class="text-sm font-medium text-gray-500">Trip Purpose</dt>
-                                            <dd class="mt-1 text-gray-800" id="review-tripPurpose">-</dd>
-                                        </div>
-                                        <div class="md:col-span-2">
-                                            <dt class="text-sm font-medium text-gray-500">Activity Interests</dt>
-                                            <dd class="mt-1 text-gray-800" id="review-activityInterests">-</dd>
-                                        </div>
-                                        <div class="md:col-span-2" id="review-specialInterests-container">
-                                            <dt class="text-sm font-medium text-gray-500">Special Interests</dt>
-                                            <dd class="mt-1 text-gray-800" id="review-specialInterests">-</dd>
-                                        </div>
-                                        <div class="md:col-span-2" id="review-accessibilityRequirements-container">
-                                            <dt class="text-sm font-medium text-gray-500">Accessibility Requirements</dt>
-                                            <dd class="mt-1 text-gray-800" id="review-accessibilityRequirements">-</dd>
-                                        </div>
-                                    </dl>
-                                </div>
-                            </div>
-                            
-                            <div class="bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
-                                <div class="bg-primary/10 px-4 py-3 border-b border-gray-200">
-                                    <h3 class="text-lg font-semibold text-primary flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                                        </svg>
-                                        Budget & Planning
-                                    </h3>
-                                </div>
-                                <div class="p-4">
-                                    <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
-                                        <div>
-                                            <dt class="text-sm font-medium text-gray-500">Budget Range</dt>
-                                            <dd class="mt-1 text-gray-800" id="review-budget">-</dd>
-                                        </div>
-                                        <div>
-                                            <dt class="text-sm font-medium text-gray-500">Booking Timeline</dt>
-                                            <dd class="mt-1 text-gray-800" id="review-bookingTimeline">-</dd>
-                                        </div>
-                                        <div class="md:col-span-2" id="review-paymentPreferences-container">
-                                            <dt class="text-sm font-medium text-gray-500">Payment Preferences</dt>
-                                            <dd class="mt-1 text-gray-800" id="review-paymentPreferences">-</dd>
-                                        </div>
-                                        <div>
-                                            <dt class="text-sm font-medium text-gray-500">Travel Insurance Interest</dt>
-                                            <dd class="mt-1 text-gray-800" id="review-travelInsurance">No</dd>
-                                        </div>
-                                    </dl>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-blue-50 p-4 rounded-lg mb-8">
-                            <p class="text-sm text-blue-700">
-                                <span class="font-medium">Privacy Note:</span> By submitting this form, you agree to our privacy policy and consent to be contacted regarding your travel inquiry.
-                            </p>
-                        </div>
-                        
-                        <div class="flex justify-between">
-                            <button type="button" class="btn-secondary px-6 py-3 rounded-lg font-medium prev-step">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 inline" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-                                </svg>
-                                Back
-                            </button>
-                            <button type="submit" class="btn-primary px-6 py-3 rounded-lg font-medium" id="submit-form">
-                                Submit Inquiry
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 inline" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </form>
+            <a href="#join" class="bg-[#d88a8a] text-white px-6 py-2 rounded-full text-sm font-semibold cta-button">
+                Begin Journey
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 px-6">
+        <div class="max-w-4xl mx-auto text-center fade-in visible">
+            <div class="inline-block px-4 py-1 mb-6 border border-[#d88a8a]/30 rounded-full text-[#d88a8a] text-xs font-bold uppercase tracking-widest bg-[#fff0f3]">
+                From Striving to Rest
+            </div>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight">
+                You were not created to <br/> struggle <span class="italic text-[#d88a8a]">alone</span>.
+            </h1>
+            <p class="text-lg md:text-xl text-neutral-500 mb-10 max-w-2xl mx-auto leading-relaxed">
+                HeartUnion is a sacred space where weary hearts are healed, minds are renewed, and lives are transformed through mystical union with God.
+            </p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                <a href="#join" class="w-full md:w-auto bg-[#3d3535] text-white px-8 py-4 rounded-full font-bold cta-button text-center">
+                    👉 Begin Your Journey
+                </a>
+                <a href="#experience" class="w-full md:w-auto border border-[#f8bbd0] text-[#d88a8a] px-8 py-4 rounded-full font-bold hover:bg-white transition bg-white/50 text-center">
+                    ✨ Enter the Rest
+                </a>
             </div>
         </div>
-    </div>
-    
+    </header>
+
+    <!-- Section 2: The Pain -->
+    <section class="py-24 px-6 bg-white/40 fade-in">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl mb-6">You’ve tried to be strong.</h2>
+                    <p class="text-neutral-600 mb-8 leading-relaxed">
+                        You’ve prayed, worked, believed — yet your heart still feels tired. You’re not broken; you’re just carrying weight you were never meant to carry alone.
+                    </p>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="flex items-center gap-3 text-neutral-700">
+                            <span class="w-2 h-2 rounded-full bg-[#f8bbd0]"></span>
+                            <span>Spiritually exhausted</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-neutral-700">
+                            <span class="w-2 h-2 rounded-full bg-[#f8bbd0]"></span>
+                            <span>Mentally overwhelmed</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-neutral-700">
+                            <span class="w-2 h-2 rounded-full bg-[#f8bbd0]"></span>
+                            <span>Emotionally numb</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-neutral-700">
+                            <span class="w-2 h-2 rounded-full bg-[#f8bbd0]"></span>
+                            <span>Successful on the outside, empty on the inside</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl ring-8 ring-[#fff0f3]">
+                        <img src="https://images.unsplash.com/photo-1516589174184-c684846b4b63?q=80&w=1000&auto=format&fit=crop" alt="Quiet contemplation" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl max-w-xs border border-[#fff0f3]">
+                        <p class="serif italic text-lg text-[#d88a8a]">"Because He finished, I can rest."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: The Revelation -->
+    <section id="about" class="py-24 px-6 bg-[#3d3535] text-white overflow-hidden relative fade-in">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-[#f8bbd0]/10 blur-[120px] rounded-full"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl mb-12 leading-snug">
+                What if the answer isn’t more effort… <br/><span class="text-[#f8bbd0] italic">but deeper union?</span>
+            </h2>
+            <p class="text-xl text-neutral-300 mb-12 leading-relaxed">
+                HeartUnion exists to remind you of a forgotten truth: God is not distant. He is united with you. This is not religion. This is not striving. This is resting in finished union.
+            </p>
+            <div class="grid md:grid-cols-3 gap-8 text-left">
+                <div class="border-l border-[#f8bbd0]/40 pl-6">
+                    <h3 class="text-xl font-bold mb-2">Healing</h3>
+                    <p class="text-neutral-400 text-sm">Flowing from the heart of presence, not performance.</p>
+                </div>
+                <div class="border-l border-[#f8bbd0]/40 pl-6">
+                    <h3 class="text-xl font-bold mb-2">Clarity</h3>
+                    <p class="text-neutral-400 text-sm">Seeing your life through the lens of divine perspective.</p>
+                </div>
+                <div class="border-l border-[#f8bbd0]/40 pl-6">
+                    <h3 class="text-xl font-bold mb-2">Abundance</h3>
+                    <p class="text-neutral-400 text-sm">Living from the overflow of being, not doing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4 & 6: Inside HeartUnion -->
+    <section id="experience" class="py-24 px-6 fade-in">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl mb-4">Inside HeartUnion</h2>
+                <p class="text-neutral-500">A slow, deep, and restful faith experience.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-soft p-10 bg-white">
+                    <div class="text-3xl mb-6 bg-[#fff0f3] w-14 h-14 flex items-center justify-center rounded-2xl">✨</div>
+                    <h3 class="text-xl font-bold mb-4">Biblical Meditation</h3>
+                    <p class="text-neutral-600 leading-relaxed">Guided meditations and imagination practices that move God from a theory to a living presence.</p>
+                </div>
+                <div class="card-soft p-10 bg-white">
+                    <div class="text-3xl mb-6 bg-[#fff0f3] w-14 h-14 flex items-center justify-center rounded-2xl">🌿</div>
+                    <h3 class="text-xl font-bold mb-4">Heart Healing</h3>
+                    <p class="text-neutral-600 leading-relaxed">Sessions designed to heal emotional wounds and align your spirit, soul, and body in peace.</p>
+                </div>
+                <div class="card-soft p-10 bg-white">
+                    <div class="text-3xl mb-6 bg-[#fff0f3] w-14 h-14 flex items-center justify-center rounded-2xl">🤝</div>
+                    <h3 class="text-xl font-bold mb-4">Soul Community</h3>
+                    <p class="text-neutral-600 leading-relaxed">A safe, gentle space for Millennials and Gen Z to walk the journey of union together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Who this is for -->
+    <section id="who" class="py-24 px-6 bg-[#fff0f3]/50 fade-in">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl mb-12 text-center">Is this for you?</h2>
+            <div class="space-y-6">
+                <div class="flex gap-6 items-start bg-white p-6 rounded-2xl shadow-sm border border-[#f8bbd0]/20">
+                    <span class="text-[#d88a8a] text-xl font-bold">✔</span>
+                    <p class="text-neutral-700">You’re spiritually hungry but tired of performance and surface-level faith.</p>
+                </div>
+                <div class="flex gap-6 items-start bg-white p-6 rounded-2xl shadow-sm border border-[#f8bbd0]/20">
+                    <span class="text-[#d88a8a] text-xl font-bold">✔</span>
+                    <p class="text-neutral-700">You long to feel God’s presence, not just know information about Him.</p>
+                </div>
+                <div class="flex gap-6 items-start bg-white p-6 rounded-2xl shadow-sm border border-[#f8bbd0]/20">
+                    <span class="text-[#d88a8a] text-xl font-bold">✔</span>
+                    <p class="text-neutral-700">You’re successful in the world's eyes, yet inwardly weary and seeking rest.</p>
+                </div>
+                <div class="flex gap-6 items-start bg-white p-6 rounded-2xl shadow-sm border border-[#f8bbd0]/20">
+                    <span class="text-[#d88a8a] text-xl font-bold">✔</span>
+                    <p class="text-neutral-700">You desire a life of clarity, joy, and overflow in every area—including your calling and finances.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA / Signup Section -->
+    <section id="join" class="py-32 px-6 text-center fade-in">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-4xl md:text-5xl mb-8 leading-tight">Are you ready to return to rest?</h2>
+            <p class="text-lg text-neutral-500 mb-12 italic">
+                “You don’t need to become someone new. You only need to remember who you already are in Him.”
+            </p>
+            
+            <div class="mb-10 p-2 bg-white rounded-full border border-[#f8bbd0] shadow-lg flex flex-col md:flex-row items-center max-w-lg mx-auto">
+                <input type="email" placeholder="Enter your email address" class="w-full px-6 py-4 bg-transparent outline-none text-neutral-700" id="userEmail">
+                <button onclick="handleSubmit()" class="w-full md:w-auto bg-[#d88a8a] text-white px-8 py-4 rounded-full font-bold cta-button whitespace-nowrap">
+                    Begin Journey
+                </button>
+            </div>
+            
+            <p class="text-neutral-400 text-sm">No pressure. No performance. Just presence.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 px-6 border-t border-[#f8bbd0]/30 bg-white">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 text-center md:text-left">
+            <div class="col-span-2">
+                <div class="text-2xl font-bold tracking-tight mb-4">Heart<span class="text-[#d88a8a]">Union</span></div>
+                <p class="text-neutral-500 max-w-xs mb-6 mx-auto md:mx-0">Healing hearts. Renewing minds. Restoring joy.</p>
+                <div class="flex justify-center md:justify-start gap-4">
+                    <a href="https://instagram.com/heartunion" target="_blank" class="text-neutral-400 hover:text-[#d88a8a] transition">Instagram</a>
+                    <a href="#" class="text-neutral-400 hover:text-[#d88a8a] transition">Mailing List</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 uppercase text-xs tracking-widest text-neutral-400">Pathways</h4>
+                <ul class="space-y-2 text-neutral-600 text-sm">
+                    <li><a href="#experience" class="hover:text-[#d88a8a] transition">Meditations</a></li>
+                    <li><a href="#experience" class="hover:text-[#d88a8a] transition">Healing Sessions</a></li>
+                    <li><a href="#about" class="hover:text-[#d88a8a] transition">Teachings</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 uppercase text-xs tracking-widest text-neutral-400">Join Us</h4>
+                <ul class="space-y-2 text-neutral-600 text-sm">
+                    <li><a href="#join" class="hover:text-[#d88a8a] transition">Community</a></li>
+                    <li><a href="#" class="hover:text-[#d88a8a] transition">Resources</a></li>
+                    <li><a href="mailto:hello@heartunion.com" class="hover:text-[#d88a8a] transition">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-neutral-50 text-center text-xs text-neutral-400">
+            &copy; 2024 HeartUnion. From striving to rest.
+        </div>
+    </footer>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Form steps navigation
-            const form = document.getElementById('travel-inquiry-form');
-            const formSteps = document.querySelectorAll('.form-step');
-            const nextButtons = document.querySelectorAll('.next-step');
-            const prevButtons = document.querySelectorAll('.prev-step');
-            const progressBarFill = document.querySelector('.progress-bar-fill');
-            const progressText = document.getElementById('progress-text');
-            const stepIndicatorBubbles = document.querySelectorAll('.step-indicator-bubble');
-            const stepIndicatorLines = document.querySelectorAll('[id^="line-"]');
-            const allFormDataInput = document.getElementById('all_form_data');
-            
-            let currentStep = 1;
-            const totalSteps = formSteps.length;
-            
-            // Update progress indicators
-            function updateProgress() {
-                // Update mobile progress bar
-                const progressPercentage = ((currentStep - 1) / (totalSteps - 1)) * 100;
-                progressBarFill.style.width = `${progressPercentage}%`;
-                progressText.textContent = `Step ${currentStep} of ${totalSteps}`;
-                
-                // Update step indicator bubbles and lines
-                stepIndicatorBubbles.forEach((bubble, index) => {
-                    const step = parseInt(bubble.dataset.step);
-                    
-                    if (step < currentStep) {
-                        bubble.classList.add('completed');
-                        bubble.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>';
-                    } else {
-                        bubble.classList.remove('completed');
-                        bubble.textContent = step;
-                    }
-                    
-                    if (step === currentStep) {
-                        bubble.classList.add('active');
-                        bubble.nextElementSibling?.classList.add('active');
-                    } else {
-                        bubble.classList.remove('active');
-                        bubble.nextElementSibling?.classList.remove('active');
-                    }
-                });
-                
-                // Update connecting lines
-                stepIndicatorLines.forEach(line => {
-                    const [_, fromStep, toStep] = line.id.match(/line-(\d+)-(\d+)/);
-                    
-                    if (parseInt(fromStep) < currentStep) {
-                        line.classList.add('completed');
-                    } else {
-                        line.classList.remove('completed');
-                    }
-                });
+        function handleSubmit() {
+            const email = document.getElementById('userEmail').value;
+            if (email && email.includes('@')) {
+                alert('Welcome to HeartUnion! We have received your request.');
+                document.getElementById('userEmail').value = '';
+            } else {
+                alert('Please enter a valid email address.');
             }
-            
-            // Show specific step
-            function showStep(stepNumber) {
-                formSteps.forEach((step, index) => {
-                    if (parseInt(step.dataset.step) === stepNumber) {
-                        step.classList.add('active');
-                    } else {
-                        step.classList.remove('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = { threshold: 0.15 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
                     }
                 });
-                
-                currentStep = stepNumber;
-                updateProgress();
-                
-                // If it's the review step, populate it
-                if (currentStep === 5) {
-                    populateReviewStep();
-                }
-            }
-            
-            // Validate current step
-            function validateStep(stepNumber) {
-                if (stepNumber === 1) {
-                    const fullName = document.getElementById('fullName').value;
-                    const email = document.getElementById('email').value;
-                    const phone = document.getElementById('phone').value;
-                    const country = document.getElementById('country').value;
-                    
-                    return fullName && email && phone && country;
-                } else if (stepNumber === 2) {
-                    const selectedDestinations = document.getElementById('selectedDestinations').value;
-                    const startDate = document.getElementById('startDate').value;
-                    const endDate = document.getElementById('endDate').value;
-                    
-                    return selectedDestinations && startDate && endDate;
-                } else if (stepNumber === 3) {
-                    const tripPurpose = document.querySelectorAll('input[name="tripPurpose"]:checked');
-                    const activityInterests = document.querySelectorAll('input[name="activityInterests"]:checked');
-                    
-                    return tripPurpose.length > 0 && activityInterests.length > 0;
-                } else if (stepNumber === 4) {
-                    const bookingTimeline = document.querySelector('input[name="bookingTimeline"]:checked');
-                    
-                    return bookingTimeline !== null;
-                }
-                
-                return true;
-            }
-            
-            // Next step button click
-            nextButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    if (validateStep(currentStep)) {
-                        if (currentStep < totalSteps) {
-                            showStep(currentStep + 1);
-                            window.scrollTo(0, 0);
-                        }
-                    } else {
-                        alert('Please fill in all required fields before proceeding.');
-                    }
-                });
-            });
-            
-            // Previous step button click
-            prevButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    if (currentStep > 1) {
-                        showStep(currentStep - 1);
-                        window.scrollTo(0, 0);
-                    }
-                });
-            });
-            
-            // Destination cards selection
-            const destinationCards = document.querySelectorAll('.destination-card');
-            const selectedDestinationsInput = document.getElementById('selectedDestinations');
-            const customDestinationContainer = document.getElementById('custom-destination-container');
-            
-            destinationCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    card.classList.toggle('selected');
-                    
-                    // Update hidden input with selected destinations
-                    const selectedCards = document.querySelectorAll('.destination-card.selected');
-                    const destinations = Array.from(selectedCards).map(card => card.dataset.destination);
-                    selectedDestinationsInput.value = destinations.join(', ');
-                    
-                    // Show/hide custom destination input
-                    if (destinations.includes('Other')) {
-                        customDestinationContainer.classList.remove('hidden');
-                    } else {
-                        customDestinationContainer.classList.add('hidden');
-                    }
-                });
-            });
-            
-            // Custom purpose and activity inputs
-            const purposeOtherCheckbox = document.getElementById('purpose-other');
-            const customPurposeContainer = document.getElementById('custom-purpose-container');
-            const activityOtherCheckbox = document.getElementById('activity-other');
-            const customActivityContainer = document.getElementById('custom-activity-container');
-            
-            purposeOtherCheckbox.addEventListener('change', () => {
-                if (purposeOtherCheckbox.checked) {
-                    customPurposeContainer.classList.remove('hidden');
-                } else {
-                    customPurposeContainer.classList.add('hidden');
-                }
-            });
-            
-            activityOtherCheckbox.addEventListener('change', () => {
-                if (activityOtherCheckbox.checked) {
-                    customActivityContainer.classList.remove('hidden');
-                } else {
-                    customActivityContainer.classList.add('hidden');
-                }
-            });
-            
-            // Traveler count buttons
-            const increaseButtons = document.querySelectorAll('.increase-count');
-            const decreaseButtons = document.querySelectorAll('.decrease-count');
-            
-            increaseButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const target = button.dataset.target;
-                    const input = document.getElementById(target);
-                    const currentValue = parseInt(input.value);
-                    const maxValue = parseInt(input.getAttribute('max'));
-                    
-                    if (currentValue < maxValue) {
-                        input.value = currentValue + 1;
-                    }
-                });
-            });
-            
-            decreaseButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const target = button.dataset.target;
-                    const input = document.getElementById(target);
-                    const currentValue = parseInt(input.value);
-                    const minValue = parseInt(input.getAttribute('min'));
-                    
-                    if (currentValue > minValue) {
-                        input.value = currentValue - 1;
-                    }
-                });
-            });
-            
-            // Budget range slider
-            const budgetRangeSlider = document.getElementById('budgetRange');
-            const budgetValueDisplay = document.getElementById('budgetValue');
-            const currencySelect = document.getElementById('currency');
-            
-            function updateBudgetDisplay() {
-                const value = budgetRangeSlider.value;
-                const currency = currencySelect.value;
-                const currencySymbol = getCurrencySymbol(currency);
-                
-                budgetValueDisplay.textContent = `${currencySymbol}${parseInt(value).toLocaleString()}`;
-                
-                // Also update min and max displays
-                document.getElementById('budgetMin').textContent = `${currencySymbol}${parseInt(budgetRangeSlider.min).toLocaleString()}`;
-                document.getElementById('budgetMax').textContent = `${currencySymbol}${parseInt(budgetRangeSlider.max).toLocaleString()}`;
-            }
-            
-            function getCurrencySymbol(currency) {
-                const symbols = {
-                    'USD': '$',
-                    'EUR': '€',
-                    'GBP': '£',
-                    'CAD': 'C$',
-                    'AUD': 'A$',
-                    'INR': '₹'
-                };
-                
-                return symbols[currency] || currency;
-            }
-            
-            budgetRangeSlider.addEventListener('input', updateBudgetDisplay);
-            currencySelect.addEventListener('change', updateBudgetDisplay);
-            
-            // Initialize budget display
-            updateBudgetDisplay();
-            
-            // Review step population
-            function populateReviewStep() {
-                // Personal Information
-                document.getElementById('review-fullName').textContent = document.getElementById('fullName').value;
-                document.getElementById('review-email').textContent = document.getElementById('email').value;
-                document.getElementById('review-phone').textContent = document.getElementById('phone').value;
-                document.getElementById('review-country').textContent = document.getElementById('country').value;
-                
-                const contactMethod = document.querySelector('input[name="contactMethod"]:checked').value;
-                document.getElementById('review-contactMethod').textContent = contactMethod;
-                
-                // Travel Details
-                document.getElementById('review-destinations').textContent = document.getElementById('selectedDestinations').value;
-                if (document.getElementById('selectedDestinations').value.includes('Other') && document.getElementById('customDestination').value) {
-                    document.getElementById('review-destinations').textContent += ` (${document.getElementById('customDestination').value})`;
-                }
-                
-                document.getElementById('review-startDate').textContent = formatDate(document.getElementById('startDate').value);
-                document.getElementById('review-endDate').textContent = formatDate(document.getElementById('endDate').value);
-                document.getElementById('review-flexibleDates').textContent = document.getElementById('flexibleDates').checked ? 'Yes' : 'No';
-                
-                const adults = document.getElementById('adults').value;
-                const children = document.getElementById('children').value;
-                document.getElementById('review-travelers').textContent = `${adults} Adult${adults !== '1' ? 's' : ''}${children !== '0' ? `, ${children} Child${children !== '1' ? 'ren' : ''}` : ''}`;
-                
-                const accommodation = document.getElementById('accommodation').value;
-                document.getElementById('review-accommodation').textContent = accommodation === 'midRange' ? 'Mid-Range' : 
-                                                                             accommodation === 'noPreference' ? 'No Preference' : 
-                                                                             accommodation.charAt(0).toUpperCase() + accommodation.slice(1);
-                
-                // Experience Preferences
-                const tripPurposes = Array.from(document.querySelectorAll('input[name="tripPurpose"]:checked')).map(input => input.value);
-                document.getElementById('review-tripPurpose').textContent = tripPurposes.join(', ');
-                if (tripPurposes.includes('Other') && document.getElementById('customPurpose').value) {
-                    document.getElementById('review-tripPurpose').textContent += ` (${document.getElementById('customPurpose').value})`;
-                }
-                
-                const activityInterests = Array.from(document.querySelectorAll('input[name="activityInterests"]:checked')).map(input => input.value);
-                document.getElementById('review-activityInterests').textContent = activityInterests.join(', ');
-                if (activityInterests.includes('Other') && document.getElementById('customActivity').value) {
-                    document.getElementById('review-activityInterests').textContent += ` (${document.getElementById('customActivity').value})`;
-                }
-                
-                const specialInterests = document.getElementById('specialInterests').value;
-                if (specialInterests) {
-                    document.getElementById('review-specialInterests').textContent = specialInterests;
-                    document.getElementById('review-specialInterests-container').classList.remove('hidden');
-                } else {
-                    document.getElementById('review-specialInterests-container').classList.add('hidden');
-                }
-                
-                const accessibilityRequirements = document.getElementById('accessibilityRequirements').value;
-                if (accessibilityRequirements) {
-                    document.getElementById('review-accessibilityRequirements').textContent = accessibilityRequirements;
-                    document.getElementById('review-accessibilityRequirements-container').classList.remove('hidden');
-                } else {
-                    document.getElementById('review-accessibilityRequirements-container').classList.add('hidden');
-                }
-                
-                // Budget & Planning
-                const budgetValue = document.getElementById('budgetRange').value;
-                const currency = document.getElementById('currency').value;
-                const currencySymbol = getCurrencySymbol(currency);
-                document.getElementById('review-budget').textContent = `${currencySymbol}${parseInt(budgetValue).toLocaleString()} (${currency})`;
-                
-                const bookingTimeline = document.querySelector('input[name="bookingTimeline"]:checked').value;
-                document.getElementById('review-bookingTimeline').textContent = bookingTimeline === 'immediate' ? 'Ready to book immediately' :
-                                                                               bookingTimeline === 'within1Month' ? 'Within 1 month' :
-                                                                               bookingTimeline === 'within3Months' ? 'Within 3 months' :
-                                                                               'More than 3 months from now';
-                
-                const paymentPreferences = Array.from(document.querySelectorAll('input[name="paymentPreferences"]:checked')).map(input => input.value);
-                if (paymentPreferences.length > 0) {
-                    document.getElementById('review-paymentPreferences').textContent = paymentPreferences.join(', ');
-                    document.getElementById('review-paymentPreferences-container').classList.remove('hidden');
-                } else {
-                    document.getElementById('review-paymentPreferences-container').classList.add('hidden');
-                }
-                
-                document.getElementById('review-travelInsurance').textContent = document.getElementById('travelInsurance').checked ? 'Yes' : 'No';
-                
-                // Prepare all form data for submission
-                const formData = {
-                    personalInfo: {
-                        fullName: document.getElementById('fullName').value,
-                        email: document.getElementById('email').value,
-                        phone: document.getElementById('phone').value,
-                        country: document.getElementById('country').value,
-                        contactMethod: contactMethod
-                    },
-                    travelDetails: {
-                        destinations: document.getElementById('selectedDestinations').value,
-                        customDestination: document.getElementById('customDestination').value,
-                        startDate: document.getElementById('startDate').value,
-                        endDate: document.getElementById('endDate').value,
-                        flexibleDates: document.getElementById('flexibleDates').checked,
-                        adults: adults,
-                        children: children,
-                        accommodation: accommodation
-                    },
-                    experiencePreferences: {
-                        tripPurpose: tripPurposes,
-                        customPurpose: document.getElementById('customPurpose').value,
-                        activityInterests: activityInterests,
-                        customActivity: document.getElementById('customActivity').value,
-                        specialInterests: specialInterests,
-                        accessibilityRequirements: accessibilityRequirements
-                    },
-                    budgetPlanning: {
-                        budget: budgetValue,
-                        currency: currency,
-                        bookingTimeline: bookingTimeline,
-                        paymentPreferences: paymentPreferences,
-                        travelInsurance: document.getElementById('travelInsurance').checked
-                    }
-                };
-                
-                // Update the hidden input with all form data
-                allFormDataInput.value = JSON.stringify(formData);
-            }
-            
-            function formatDate(dateString) {
-                if (!dateString) return '';
-                
-                const date = new Date(dateString);
-                return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-            }
-            
-            // Form submission
-            form.addEventListener('submit', function(e) {
-                // Ensure all form data is collected
-                populateReviewStep();
-            });
-            
-            // Initialize
-            updateProgress();
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         });
     </script>
 </body>
